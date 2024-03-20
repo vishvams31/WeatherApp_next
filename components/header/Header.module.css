@@ -1,0 +1,12 @@
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+@media only screen and (max-width: 520px) {
+  .wrapper {
+    grid-template-columns: 1fr;
+    place-items: center;
+  }
+}
