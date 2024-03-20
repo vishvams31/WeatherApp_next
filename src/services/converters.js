@@ -1,3 +1,5 @@
+import message from "../constants/messages";
+
 export const ctoF = (c) => (c * 9) / 5 + 32;
 
 export const timeTo12HourFormat = (time) => {
@@ -6,24 +8,7 @@ export const timeTo12HourFormat = (time) => {
 };
 export const degToCompass = (num) => {
   var val = Math.round(num / 22.5);
-  var arr = [
-    "N",
-    "NNE",
-    "NE",
-    "ENE",
-    "E",
-    "ESE",
-    "SE",
-    "SSE",
-    "S",
-    "SSW",
-    "SW",
-    "WSW",
-    "W",
-    "WNW",
-    "NW",
-    "NNW",
-  ];
+  var arr = message.DIRECTIONS
   return arr[val % 16];
 };
 

@@ -13,7 +13,7 @@ export const getData = async (cityInput, setWeatherData) => {
         } else {
         }
     } catch (error) {
-        console.error("Error fetching data:", error);
+        console.error(message.DATA_FETCHING_ERROR, error);
         toast.error(message.CITY_NOT_FOUND);
         // toast.error(message.DATA_FETCHING_ERROR);
     }

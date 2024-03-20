@@ -6,20 +6,21 @@ import { DateAndTime } from "../components/dateandtime/DateAndTime";
 import { Search } from "../components/search/Search";
 import { MetricsBox } from "../components/matricBox/MetricsBox";
 import { UnitSwitch } from "../components/unitSwitch/UnitSwitch";
-import styles from "../styles/Home.module.css";
-import { getData } from "../services/service";
+import styles from "../../styles/Home.module.css";
+import { getData } from "../../src/services/service";
 import React from 'react';
 import Image from "next/image";
 import toast from "react-hot-toast";
+import message from "../constants/messages";
 
 const Home = () => {
     const [cityInput, setCityInput] = useState("mumbai");
     const [triggerFetch, setTriggerFetch] = useState(true);
     const [weatherData, setWeatherData] = useState();
     const [unitSystem, setUnitSystem] = useState("fehranheit");
-
     useEffect(() => {
         getData(cityInput, setWeatherData);
+        console.log(weatherData)
         setCityInput("");
     }, [triggerFetch]);
 
@@ -30,7 +31,7 @@ const Home = () => {
 
     const handleSearch = () => {
         if (cityInput.length <= 0) {
-            toast.error("Please add input");
+            toast.error(message.INPUT_NEEDED);
         } else {
             setTriggerFetch(!triggerFetch);
         }
@@ -38,7 +39,7 @@ const Home = () => {
 
     return weatherData && (
         <>
-            <Image className="background-Image" src={'/Weather3.jpeg'} layout="fill" objectFit="cover" alt="Background Image" />
+            <Image className="background-Image" src={'/Weather3.jpeg'} fill='true' objectFit="cover" alt="Background Image" />
             <div className="title">Weather App</div>
             <div className={styles.wrapper}>
                 <MainCard
